@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#e94560" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Snake body -->
+  <polyline points="15,50 30,50 30,30 50,30 50,55 70,55 70,35 85,35"/>
+  <!-- Head -->
+  <circle cx="85" cy="35" r="5" fill="#e94560"/>
+  <!-- Food -->
+  <rect x="42" y="70" width="8" height="8" rx="2" fill="#e94560" stroke="none"/>
+</svg>
