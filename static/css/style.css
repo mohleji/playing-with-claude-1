@@ -77,10 +77,12 @@ body {
     gap: var(--spacing-md);
 }
 
-.game-card:hover {
+.game-card:hover,
+.game-card:focus-visible {
     transform: translateY(-4px);
     border-color: var(--color-primary);
     box-shadow: 0 8px 30px var(--color-primary-glow);
+    outline: none;
 }
 
 .game-card__icon {
@@ -127,8 +129,11 @@ body {
     transition: color 0.2s;
 }
 
-.game-page__back:hover {
+.game-page__back:hover,
+.game-page__back:focus-visible {
     color: var(--color-primary);
+    outline: none;
+    text-decoration: underline;
 }
 
 .game-page__canvas-wrap {
@@ -162,8 +167,11 @@ body {
     transition: opacity 0.2s;
 }
 
-.game-page__restart:hover {
+.game-page__restart:hover,
+.game-page__restart:focus-visible {
     opacity: 0.85;
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 /* ===== Responsive ===== */
