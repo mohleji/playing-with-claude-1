@@ -84,5 +84,6 @@ playing-with-claude-1/
 ```bash
 pip install -r requirements.txt
 python app.py
-# Open http://localhost:5000
+# Open http://localhost:5001
+# Override port: PORT=8080 python app.py
 ```
