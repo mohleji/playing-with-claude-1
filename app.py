@@ -26,8 +26,10 @@ def index() -> str:
 
 @app.route("/game/<slug>")
 def game(slug: str) -> str:
+    if slug not in VALID_GAMES:
+        abort(404)
     return render_template(f"{slug}.html")
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

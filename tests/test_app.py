@@ -31,3 +31,23 @@ def test_index_contains_game_names(client):
     html = response.data.decode()
     assert "Tic-Tac-Toe" in html
     assert "Snake" in html
+
+
+def test_game_tictactoe_returns_200(client):
+    response = client.get("/game/tictactoe")
+    assert response.status_code == 200
+
+
+def test_game_snake_returns_200(client):
+    response = client.get("/game/snake")
+    assert response.status_code == 200
+
+
+def test_game_invalid_slug_returns_404(client):
+    response = client.get("/game/doesnotexist")
+    assert response.status_code == 404
+
+
+def test_game_path_traversal_returns_404(client):
+    response = client.get("/game/../../etc/passwd")
+    assert response.status_code == 404
