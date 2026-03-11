@@ -9,6 +9,9 @@ on:
     types: [opened, assigned]
   pull_request_review:
     types: [submitted]
+  # Triggered by Jira Automation via GitHub API
+  repository_dispatch:
+    types: [jira-task]
 
 jobs:
   claude:
@@ -16,14 +19,15 @@ jobs:
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
-      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude'))) ||
+      github.event_name == 'repository_dispatch'
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pull-requests: read
-      issues: read
+      contents: write
+      pull-requests: write
+      issues: write
       id-token: write
-      actions: read # Required for Claude to read CI results on PRs
+      actions: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -35,16 +39,19 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-
-          # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
             actions: read
-
-          # Optional: Give a custom prompt to Claude. If this is not specified, Claude will perform the instructions specified in the comment that tagged it.
-          # prompt: 'Update the pull request description to include a summary of changes.'
-
-          # Optional: Add claude_args to customize behavior and configuration
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
-          # claude_args: '--allowed-tools Bash(gh pr:*)'
-
+          # For Jira-triggered runs, build the prompt from the dispatch payload.
+          # For GitHub-triggered runs (issue comments etc.), leave prompt empty
+          # so Claude uses the comment/issue body as the prompt.
+          prompt: |
+            ${{ github.event_name == 'repository_dispatch' &&
+              format(
+                'Jira ticket {0}: {1}\n\nDescription:\n{2}\n\nAcceptance Criteria:\n{3}\n\nJira URL: {4}\n\nImplement this task following the conventions in CLAUDE.md. Create a feature branch named claude/{0}-{5}, write the code, add tests, and open a pull request.',
+                github.event.client_payload.ticket_id,
+                github.event.client_payload.title,
+                github.event.client_payload.description,
+                github.event.client_payload.acceptance_criteria,
+                github.event.client_payload.url,
+                github.event.client_payload.slug
+              ) || '' }}
