@@ -16,6 +16,40 @@
     --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
+/* ===== Light Mode ===== */
+[data-theme="light"] {
+    --color-bg: #f0f2f5;
+    --color-surface: #ffffff;
+    --color-surface-hover: #e8eaed;
+    --color-primary: #e94560;
+    --color-primary-glow: rgba(233, 69, 96, 0.2);
+    --color-text: #1a1a2e;
+    --color-text-muted: #555;
+    --color-border: #d0d0d0;
+}
+
+/* ===== Theme Toggle Button ===== */
+.theme-toggle {
+    position: fixed;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    padding: 0.4rem 0.9rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    z-index: 100;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
 /* ===== Reset & Base ===== */
 *,
 *::before,
