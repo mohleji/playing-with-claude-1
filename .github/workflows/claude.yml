@@ -47,11 +47,10 @@ jobs:
           prompt: |
             ${{ github.event_name == 'repository_dispatch' &&
               format(
-                'Jira ticket {0}: {1}\n\nDescription:\n{2}\n\nAcceptance Criteria:\n{3}\n\nJira URL: {4}\n\nImplement this task following the conventions in CLAUDE.md. Create a feature branch named claude/{0}-{5}, write the code, add tests, and open a pull request.',
+                'Jira ticket {0}: {1}\n\nDescription:\n{2}\n\nJira URL: {3}\n\nImplement this task following the conventions in CLAUDE.md. Create a feature branch named claude/{0}-{4}, write the code, add tests, and open a pull request.',
                 github.event.client_payload.ticket_id,
                 github.event.client_payload.title,
                 github.event.client_payload.description,
-                github.event.client_payload.acceptance_criteria,
                 github.event.client_payload.url,
                 github.event.client_payload.slug
               ) || '' }}
