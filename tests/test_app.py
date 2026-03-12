@@ -43,6 +43,23 @@ def test_game_snake_returns_200(client):
     assert response.status_code == 200
 
 
+def test_game_hangman_returns_200(client):
+    response = client.get("/game/hangman")
+    assert response.status_code == 200
+
+
+def test_index_contains_hangman_link(client):
+    response = client.get("/")
+    html = response.data.decode()
+    assert "/game/hangman" in html
+
+
+def test_index_contains_hangman_name(client):
+    response = client.get("/")
+    html = response.data.decode()
+    assert "Hangman" in html
+
+
 def test_game_invalid_slug_returns_404(client):
     response = client.get("/game/doesnotexist")
     assert response.status_code == 404

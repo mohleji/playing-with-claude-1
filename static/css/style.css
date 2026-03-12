@@ -208,6 +208,120 @@ body {
     outline-offset: 2px;
 }
 
+/* ===== Hangman Game ===== */
+.hangman__gallows {
+    width: 200px;
+    height: 210px;
+    stroke: var(--color-text);
+    stroke-width: 4;
+    stroke-linecap: round;
+    fill: none;
+    margin-bottom: var(--spacing-md);
+}
+
+.hangman__gallows .hangman-part {
+    stroke: var(--color-primary);
+}
+
+.hangman__word {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin: var(--spacing-md) 0;
+}
+
+.hangman__letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2.4rem;
+    border-bottom: 3px solid var(--color-text);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text);
+    transition: color 0.2s;
+}
+
+.hangman__letter--revealed {
+    color: var(--color-primary);
+}
+
+.hangman__message {
+    min-height: 1.8rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: var(--spacing-sm) 0;
+}
+
+.hangman__message--win {
+    color: #4caf50;
+}
+
+.hangman__message--lose {
+    color: var(--color-primary);
+}
+
+.hangman__guessed {
+    min-height: 1.4rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.hangman__keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.hangman__keyboard-row {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.hangman__key {
+    width: 2.2rem;
+    height: 2.4rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.hangman__key:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+    border-color: var(--color-primary);
+}
+
+.hangman__key:disabled {
+    cursor: default;
+    opacity: 0.5;
+}
+
+.hangman__key--correct {
+    background: #2e7d32 !important;
+    border-color: #4caf50 !important;
+    color: #fff !important;
+    opacity: 1 !important;
+}
+
+.hangman__key--wrong {
+    background: #6d1f1f !important;
+    border-color: var(--color-primary) !important;
+    color: #fff !important;
+    opacity: 1 !important;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
     .landing__title {

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman — Game Arcade</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+    <button id="theme-toggle" class="theme-toggle">☀️ Light</button>
+    <main class="game-page">
+        <header class="game-page__header">
+            <h1 class="game-page__title">Hangman</h1>
+            <a href="{{ url_for('index') }}" class="game-page__back">Back to Games</a>
+        </header>
+
+        <!-- Gallows SVG -->
+        <svg id="hangman-svg"
+             class="hangman__gallows"
+             viewBox="0 0 200 210"
+             aria-label="Hangman diagram"
+             xmlns="http://www.w3.org/2000/svg">
+            <!-- Gallows structure (always visible) -->
+            <line x1="10" y1="200" x2="190" y2="200"/>
+            <line x1="60"  y1="200" x2="60"  y2="10"/>
+            <line x1="60"  y1="10"  x2="140" y2="10"/>
+            <line x1="140" y1="10"  x2="140" y2="40"/>
+        </svg>
+
+        <!-- Word display -->
+        <div id="hangman-word" class="hangman__word" aria-live="polite"></div>
+
+        <!-- Status / message -->
+        <p id="hangman-message" class="hangman__message" aria-live="assertive"></p>
+
+        <!-- Wrong guesses list -->
+        <p id="hangman-guessed" class="hangman__guessed" aria-live="polite"></p>
+
+        <!-- On-screen keyboard -->
+        <div id="hangman-keyboard" class="hangman__keyboard" role="group" aria-label="Letter keyboard"></div>
+
+        <button id="restart" class="game-page__restart">New Game</button>
+    </main>
+    <script src="{{ url_for('static', filename='js/hangman.js') }}"></script>
+</body>
+</html>

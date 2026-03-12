@@ -4,7 +4,7 @@ from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
-VALID_GAMES = {'tictactoe', 'snake'}
+VALID_GAMES = {'tictactoe', 'snake', 'hangman'}
 
 
 @app.route("/")
@@ -21,6 +21,12 @@ def index() -> str:
             "slug": "snake",
             "description": "Guide the snake and eat to grow",
             "icon": "snake.svg",
+        },
+        {
+            "name": "Hangman",
+            "slug": "hangman",
+            "description": "Guess the hidden word letter by letter",
+            "icon": "hangman.svg",
         },
     ]
     return render_template("index.html", games=games)
