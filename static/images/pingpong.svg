@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <!-- Table surface -->
+  <rect x="4" y="32" width="72" height="36" rx="4" fill="#1a1a2e" stroke="#e94560" stroke-width="2"/>
+  <!-- Net -->
+  <line x1="40" y1="32" x2="40" y2="68" stroke="#eee" stroke-width="2" stroke-dasharray="3 3"/>
+  <!-- Left paddle (CPU) -->
+  <rect x="8" y="40" width="6" height="20" rx="2" fill="#4ade80"/>
+  <!-- Right paddle (Player) -->
+  <rect x="66" y="40" width="6" height="20" rx="2" fill="#e94560"/>
+  <!-- Ball -->
+  <circle cx="40" cy="50" r="5" fill="#ffffff"/>
+  <!-- Motion lines on ball -->
+  <line x1="46" y1="47" x2="51" y2="44" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <line x1="46" y1="50" x2="52" y2="50" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+</svg>
