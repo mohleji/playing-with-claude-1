@@ -54,9 +54,15 @@ A Python (Flask) web app serving browser-based games. The landing page lists ava
 ## Git Workflow
 - `main` branch contains stable, reviewed code
 - Feature branches: `feature/<game-name>` or `feature/<description>`
+- Agent-generated branches: `claude/<description>` (e.g. `claude/SA-2-add-hangman`)
+- Human branches: `feature/`, `fix/`, `chore/`
 - Write clear commit messages: imperative mood, explain "why" not "what"
 - One logical change per commit
 - All features go through pull requests with review before merging
+- Always include co-author attribution in every commit message:
+  ```
+  Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+  ```
 
 ## Project Structure
 ```
