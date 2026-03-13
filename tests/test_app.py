@@ -60,6 +60,23 @@ def test_index_contains_hangman_name(client):
     assert "Hangman" in html
 
 
+def test_game_pingpong_returns_200(client):
+    response = client.get("/game/pingpong")
+    assert response.status_code == 200
+
+
+def test_index_contains_pingpong_link(client):
+    response = client.get("/")
+    html = response.data.decode()
+    assert "/game/pingpong" in html
+
+
+def test_index_contains_pingpong_name(client):
+    response = client.get("/")
+    html = response.data.decode()
+    assert "Ping Pong" in html
+
+
 def test_game_invalid_slug_returns_404(client):
     response = client.get("/game/doesnotexist")
     assert response.status_code == 404

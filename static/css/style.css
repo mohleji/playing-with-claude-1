@@ -322,6 +322,45 @@ body {
     opacity: 1 !important;
 }
 
+/* ===== Ping Pong Game ===== */
+.pingpong__scoreboard {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.4rem;
+}
+
+.pingpong__score-side {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.pingpong__score-label {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+}
+
+.pingpong__score-value {
+    font-size: 2rem;
+    font-weight: 700;
+    min-width: 2ch;
+    text-align: center;
+}
+
+.pingpong__score-divider {
+    color: var(--color-text-muted);
+    font-size: 1.8rem;
+}
+
+.pingpong__hint {
+    margin-top: var(--spacing-sm);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
     .landing__title {

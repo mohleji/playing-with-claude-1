@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Pong — Dave and Busters</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+    <button id="theme-toggle" class="theme-toggle">☀️ Light</button>
+    <main class="game-page">
+        <header class="game-page__header">
+            <h1 class="game-page__title">Ping Pong</h1>
+            <a href="{{ url_for('index') }}" class="game-page__back">Back to Games</a>
+        </header>
+        <div class="pingpong__scoreboard">
+            <div class="pingpong__score-side">
+                <span class="pingpong__score-label">CPU</span>
+                <span id="cpu-score" class="pingpong__score-value">0</span>
+            </div>
+            <div class="pingpong__score-divider">:</div>
+            <div class="pingpong__score-side">
+                <span id="player-score" class="pingpong__score-value">0</span>
+                <span class="pingpong__score-label">You</span>
+            </div>
+        </div>
+        <div class="game-page__canvas-wrap">
+            <canvas id="game-canvas" width="600" height="400"></canvas>
+        </div>
+        <p class="pingpong__hint">Move your mouse over the canvas — or use Arrow keys / W·S</p>
+        <button id="restart" class="game-page__restart">Restart</button>
+    </main>
+    <script src="{{ url_for('static', filename='js/pingpong.js') }}"></script>
+</body>
+</html>
